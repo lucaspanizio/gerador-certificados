@@ -1,0 +1,37 @@
+@reference "tailwindcss";
+
+#navbar {
+  @apply w-full bg-white py-4 px-8 border-b border-gray-200;
+}
+
+#navbar-inner {
+  @apply container flex justify-items-center-safe;
+
+  #navbar-logo img {
+    @apply h-10;
+  }
+
+  #navbar-items {
+    @apply flex items-center justify-end flex-1;
+  }
+}
+
+#navbar-list {
+  @apply space-x-6;
+
+  li.navbar-item {
+    @apply inline-block hover:cursor-pointer;
+  }
+
+  a.navbar-link {
+    @apply inline-flex items-center text-sm font-semibold text-slate-500 hover:text-blue-600 leading-none;
+
+    &.active {
+      @apply text-blue-600;
+    }
+
+    & > i {
+      @apply me-1.5 text-xl;
+    }
+  }
+}
