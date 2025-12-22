@@ -1,1 +1,14 @@
 @import 'tailwindcss';
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-optical-sizing: auto;
+  }
+}
