@@ -1,0 +1,21 @@
+@reference "../../styles.css";
+
+.card {
+  @apply h-18 p-4 border border-gray-100 rounded-md mb-1;
+}
+
+:host:last-of-type .card {
+  @apply mb-0;
+}
+
+.card-inner {
+  @apply flex justify-between items-center **:leading-none;
+
+  span.name {
+    @apply block text-sm font-bold text-blue-dark mb-1;
+  }
+
+  small.date {
+    @apply text-xs text-gray-200;
+  }
+}

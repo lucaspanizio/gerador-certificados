@@ -1,11 +1,11 @@
-@reference "tailwindcss";
+@reference "../../styles.css";
 
 #navbar {
-  @apply w-full bg-white py-4 px-8 border-b border-gray-200;
+  @apply h-[var(--navbar-height)] w-full bg-white py-4 px-8 border-b border-gray-100;
 }
 
 #navbar-inner {
-  @apply container flex justify-items-center-safe;
+  @apply flex justify-items-center-safe;
 
   #navbar-logo img {
     @apply h-10;
@@ -24,10 +24,10 @@
   }
 
   a.navbar-link {
-    @apply inline-flex items-center text-sm font-semibold text-slate-500 hover:text-blue-600 leading-none;
+    @apply inline-flex items-center text-sm font-semibold text-gray-200 hover:text-blue-base leading-none;
 
     &.active {
-      @apply text-blue-600;
+      @apply text-blue-base;
     }
 
     & > i {

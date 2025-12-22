@@ -1,5 +1,24 @@
 @import 'tailwindcss';
 
+:root {
+  --gray-100: #e2e8f0;
+  --gray-200: #64748b;
+  --gray-300: #121621;
+  --blue-base: #3b5ac2;
+  --blue-dark: #1a2856;
+
+  --navbar-height: 72px;
+  --content-height: calc(100dvh - var(--navbar-height));
+}
+
+@theme inline {
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-blue-base: var(--blue-base);
+  --color-blue-dark: var(--blue-dark);
+}
+
 @layer base {
   * {
     scrollbar-width: thin;
