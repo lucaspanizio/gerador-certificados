@@ -1,0 +1,16 @@
+@reference "tailwindcss";
+
+button {
+  @apply inline-flex items-center px-4 rounded-md border-none text-base text-white cursor-pointer hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50;
+
+  &.primary {
+    @apply h-12 py-3 bg-linear-90 from-[#1a2856] from-0% to-[#334EA9] to-100%;
+  }
+
+  &.secondary {
+    @apply h-10 py-2.5 bg-[#1a2856];
+    i.ph {
+      @apply me-2 text-lg;
+    }
+  }
+}

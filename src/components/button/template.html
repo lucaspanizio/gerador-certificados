@@ -1,0 +1,6 @@
+<button [disabled]="disabled()" [class]="variant()">
+  @if (variant() === 'secondary') {
+  <i class="ph ph-plus"></i>
+  }
+  <ng-content></ng-content>
+</button>
