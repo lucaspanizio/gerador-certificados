@@ -9,8 +9,5 @@ button {
 
   &.secondary {
     @apply gap-x-2 h-10 py-2.5 bg-blue-dark;
-    i.ph {
-      @apply text-lg;
-    }
   }
 }

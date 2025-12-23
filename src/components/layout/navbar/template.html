@@ -7,13 +7,18 @@
     <div id="navbar-items">
       <ul id="navbar-list">
         <li class="navbar-item">
-          <a class="navbar-link" routerLink="/home">
+          <a
+            class="navbar-link"
+            routerLink="/certificados"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
             <i class="ph ph-medal"></i>
             Lista de certificados
           </a>
         </li>
         <li class="navbar-item">
-          <a class="navbar-link active" routerLink="/about">
+          <a class="navbar-link" routerLink="/certificados/novo" routerLinkActive="active">
             <i class="ph ph-circles-three-plus"></i>
             Gerar certificado
           </a>

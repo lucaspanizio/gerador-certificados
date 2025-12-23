@@ -1,4 +1,4 @@
-@reference "../../styles.css";
+@reference "../../../styles.css";
 
 #navbar {
   @apply h-18 w-full bg-white py-4 px-8 border-b border-gray-100;

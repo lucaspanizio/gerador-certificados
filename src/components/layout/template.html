@@ -1,9 +1,7 @@
-<div id="layout">
-  <app-navbar></app-navbar>
+<div id="layout" class="grid grid-rows-[auto_1fr] min-h-screen">
+  <app-navbar />
 
-  <main id="content">
-    <ng-content></ng-content>
+  <main id="content" class="container mt-10 mx-auto px-5 md:px-20 lg:max-w-3/4">
+    <ng-content />
   </main>
 </div>
-
-<router-outlet></router-outlet>

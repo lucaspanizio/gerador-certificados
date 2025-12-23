@@ -1,12 +1,10 @@
-import { RouterOutlet } from '@angular/router';
 import { Component } from '@angular/core';
 
-import { Navbar } from '../navbar';
+import { Navbar } from './navbar';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './template.html',
-  styleUrl: './styles.css',
-  imports: [RouterOutlet, Navbar],
+  imports: [Navbar],
 })
 export class Layout {}

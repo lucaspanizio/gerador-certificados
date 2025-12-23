@@ -1,9 +1,0 @@
-@reference "../../styles.css";
-
-#layout {
-  @apply grid grid-rows-[auto_1fr] min-h-screen;
-}
-
-#content {
-  @apply container mt-10 mx-auto px-5 md:px-20 lg:max-w-3/4;
-}
