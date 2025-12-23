@@ -1,13 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 import { ItemCertificado } from '../components/item-certificado';
-import { Navbar } from '../components/navbar';
+import { Layout } from '../components/layout';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.html',
-  imports: [RouterOutlet, Navbar, ItemCertificado],
+  templateUrl: './template.html',
+  imports: [Layout, ItemCertificado],
 })
 export class App {
   protected readonly title = signal('gerador-certificados');

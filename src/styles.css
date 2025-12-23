@@ -6,9 +6,6 @@
   --gray-300: #121621;
   --blue-base: #3b5ac2;
   --blue-dark: #1a2856;
-
-  --navbar-height: 72px;
-  --content-height: calc(100dvh - var(--navbar-height));
 }
 
 @theme inline {
