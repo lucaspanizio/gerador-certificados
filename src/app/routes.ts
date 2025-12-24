@@ -12,10 +12,10 @@ export const routes: Routes = [
   },
   {
     path: 'certificados/novo',
-    loadComponent: () => import('../pages/certificados').then((m) => m.Certificados),
+    loadComponent: () => import('../pages/form-certificado').then((m) => m.FormCertificado),
   },
   {
     path: 'certificados/:id',
-    loadComponent: () => import('../pages/certificados').then((m) => m.Certificados),
+    loadComponent: () => import('../pages/form-certificado').then((m) => m.FormCertificado),
   },
 ];

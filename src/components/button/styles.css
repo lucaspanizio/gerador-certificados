@@ -1,13 +1,13 @@
 @reference "../../styles.css";
 
 button {
-  @apply inline-flex items-center px-4 rounded-md border-none text-sm text-white font-semibold cursor-pointer hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50;
+  @apply w-full flex items-center justify-center leading-none px-4 rounded-md border-none text-sm text-white font-semibold cursor-pointer hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50;
 
   &.primary {
-    @apply h-12 py-3 bg-linear-90 from-blue-dark from-0% to-[#334EA9] to-100%;
+    @apply h-12 bg-linear-90 from-blue-dark from-0% to-[#334EA9] to-100%;
   }
 
   &.secondary {
-    @apply gap-x-2 h-10 py-2.5 bg-blue-dark;
+    @apply h-10 gap-x-2 bg-blue-dark;
   }
 }

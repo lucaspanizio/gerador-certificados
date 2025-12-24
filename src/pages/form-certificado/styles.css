@@ -1,0 +1,25 @@
+@reference "../../styles.css";
+
+.input-group {
+  @apply flex flex-col gap-y-2;
+}
+
+label {
+  @apply text-blue-dark leading-5 text-sm font-medium;
+}
+
+input {
+  @apply bg-white w-full h-10 rounded-md border border-gray-100 px-3 py-2 text-sm placeholder:text-gray-200 placeholder:text-sm focus:ring-blue-base focus:ring-1 focus:border-transparent outline-none;
+}
+
+.input-group:has(input:focus) label {
+  @apply text-blue-base;
+}
+
+.input-group:has(.error-msg) label {
+  @apply text-danger-dark;
+}
+
+button:hover i {
+  font-family: 'Phosphor-Bold' !important;
+}

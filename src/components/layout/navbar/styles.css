@@ -1,7 +1,7 @@
 @reference "../../../styles.css";
 
 #navbar {
-  @apply h-18 w-full bg-white py-4 px-8 border-b border-gray-100;
+  @apply h-18 w-full py-4 px-8 bg-white border-b border-gray-100 fixed top-0 left-0 right-0 z-50;
 }
 
 #navbar-inner {

@@ -1,7 +1,12 @@
-<div id="layout" class="grid grid-rows-[auto_1fr] min-h-screen">
+<div id="layout" class="grid grid-rows-[auto_1fr] gap-y-10 min-h-screen pt-18">
   <app-navbar />
 
-  <main id="content" class="container mt-10 mx-auto px-5 md:px-20 lg:max-w-3/4">
-    <ng-content />
+  <main
+    id="content"
+    class="container flex flex-col items-center mx-auto px-5 md:px-20 lg:max-w-3/4"
+  >
+    <div class="w-full max-w-2xl">
+      <ng-content />
+    </div>
   </main>
 </div>

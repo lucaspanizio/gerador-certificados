@@ -6,6 +6,8 @@
   --gray-300: #121621;
   --blue-base: #3b5ac2;
   --blue-dark: #1a2856;
+  --danger: #e95f5f;
+  --danger-dark: #d71d1d;
 }
 
 @theme inline {
@@ -14,6 +16,8 @@
   --color-gray-300: var(--gray-300);
   --color-blue-base: var(--blue-base);
   --color-blue-dark: var(--blue-dark);
+  --color-danger: var(--danger);
+  --color-danger-dark: var(--danger-dark);
 }
 
 @layer base {
