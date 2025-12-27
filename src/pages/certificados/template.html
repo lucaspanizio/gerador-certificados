@@ -1,23 +1,25 @@
-<div class="text-center h-15 mb-8">
-  <h1 class="font-bold text-gray-300 text-2xl leading-none mb-2">Certificados gerados</h1>
-  <p class="text-gray-200 text-sm leading-5">Visualize todos os certificados gerados</p>
-</div>
-
-@if (certificados().length === 0) {
-<div
-  class="pt-12 pb-14 px-8 flex flex-col items-center gap-y-5 leading-none rounded-lg border border-gray-100"
->
-  <i class="ph ph-certificate text-5xl text-gray-200"></i>
-  <div class="w-full flex flex-col items-center gap-y-[2px]">
-    <h2 class="text-blue-dark text-sm leading-5 font-bold">Nenhum certificado gerado</h2>
-    <p class="text-gray-200 text-xs leading-4">Você ainda não gerou nenhum certificado.</p>
+<div class="mx-auto w-full max-w-2xl">
+  <div class="text-center h-15 mb-8">
+    <h1 class="font-bold text-gray-300 text-2xl leading-none mb-2">Certificados gerados</h1>
+    <p class="text-gray-200 text-sm leading-5">Visualize todos os certificados gerados</p>
   </div>
-  <app-button [variant]="'secondary'">Gerar certificado</app-button>
+
+  @if (certificados().length === 0) {
+  <div
+    class="pt-12 pb-14 px-8 flex flex-col items-center gap-y-5 leading-none rounded-lg border border-gray-100"
+  >
+    <i class="ph ph-certificate text-5xl text-gray-200"></i>
+    <div class="w-full flex flex-col items-center gap-y-[2px]">
+      <h2 class="text-blue-dark text-sm leading-5 font-bold">Nenhum certificado gerado</h2>
+      <p class="text-gray-200 text-xs leading-4">Você ainda não gerou nenhum certificado.</p>
+    </div>
+    <app-button [variant]="'secondary'">Gerar certificado</app-button>
+  </div>
+  } @else {
+  <div class="w-full">
+    <app-item-certificado></app-item-certificado>
+    <app-item-certificado></app-item-certificado>
+    <app-item-certificado></app-item-certificado>
+  </div>
+  }
 </div>
-} @else {
-<div class="w-full">
-  <app-item-certificado></app-item-certificado>
-  <app-item-certificado></app-item-certificado>
-  <app-item-certificado></app-item-certificado>
-</div>
-}

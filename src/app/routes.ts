@@ -16,6 +16,6 @@ export const routes: Routes = [
   },
   {
     path: 'certificados/:id',
-    loadComponent: () => import('../pages/form-certificado').then((m) => m.FormCertificado),
+    loadComponent: () => import('../pages/certificado').then((m) => m.Certificado),
   },
 ];

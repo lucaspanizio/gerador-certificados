@@ -11,6 +11,8 @@
 }
 
 @theme inline {
+  --text-xxs: 0.625rem;
+
   --color-gray-100: var(--gray-100);
   --color-gray-200: var(--gray-200);
   --color-gray-300: var(--gray-300);

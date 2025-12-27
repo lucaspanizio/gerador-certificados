@@ -1,50 +1,52 @@
-<div class="text-center h-15 mb-8">
-  <h1 class="font-bold text-gray-300 text-2xl leading-none mb-2">Geração de certificado</h1>
-  <p class="text-gray-200 text-sm leading-5">Preencha os dados para gerar um novo certificado</p>
-</div>
-
-<div class="p-8 w-full flex flex-col gap-y-5 leading-none rounded-lg border border-gray-100">
-  <h2 class="text-blue-dark font-bold text-lg">Novo certificado</h2>
-
-  <div class="input-group">
-    <label for="nome">Nome completo</label>
-    <input type="text" id="nome" name="nome" placeholder="Digite o nome completo do aluno" />
-    <div class="error-msg flex items-center gap-x-1 text-danger-dark">
-      <i class="ph ph-warning-circle text-base"></i>
-      <p class="text-xs leading-none align-middle">Mensagem de erro</p>
-    </div>
+<div class="mx-auto w-full max-w-2xl">
+  <div class="text-center h-15 mb-8">
+    <h1 class="font-bold text-gray-300 text-2xl leading-none mb-2">Geração de certificado</h1>
+    <p class="text-gray-200 text-sm leading-5">Preencha os dados para gerar um novo certificado</p>
   </div>
 
-  <div class="input-group">
-    <label for="atividade">Atividade</label>
-    <div class="flex gap-2">
-      <input
-        type="text"
-        id="atividade"
-        name="atividade"
-        placeholder="Digite o título da atividade"
-      />
-      <app-button [variant]="'secondary'">Adicionar</app-button>
-    </div>
-  </div>
+  <div class="p-8 w-full flex flex-col gap-y-5 leading-none rounded-lg border border-gray-100">
+    <h2 class="text-blue-dark font-bold text-lg">Novo certificado</h2>
 
-  <div>
-    <label>Lista de atividades</label>
-    <ul id="lista-atividades" class="mt-2 rounded-lg border border-gray-100 p-4 space-y-3">
-      @for (atividade of atividades; track atividade) {
-      <li
-        class="flex items-center justify-between gap-3 border-gray-100 not-last-of-type:pb-3 not-last-of-type:border-b"
-      >
-        <span class="text-sm">{{ atividade }}</span>
-        <button
-          class="group flex items-center justify-center p-1.5 rounded-sm cursor-pointer size-6 hover:bg-gray-100"
+    <div class="input-group">
+      <label for="nome">Nome completo</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite o nome completo do aluno" />
+      <div class="error-msg flex items-center gap-x-1 text-danger-dark">
+        <i class="ph ph-warning-circle text-base"></i>
+        <p class="text-xs leading-none align-middle">Mensagem de erro</p>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="atividade">Atividade</label>
+      <div class="flex gap-2">
+        <input
+          type="text"
+          id="atividade"
+          name="atividade"
+          placeholder="Digite o título da atividade"
+        />
+        <app-button [variant]="'secondary'">Adicionar</app-button>
+      </div>
+    </div>
+
+    <div>
+      <label>Lista de atividades</label>
+      <ul id="lista-atividades" class="mt-2 rounded-lg border border-gray-100 p-4 space-y-3">
+        @for (atividade of atividades; track atividade) {
+        <li
+          class="flex items-center justify-between gap-3 border-gray-100 not-last-of-type:pb-3 not-last-of-type:border-b"
         >
-          <i class="ph ph-x text-danger-dark text-base"></i>
-        </button>
-      </li>
-      }
-    </ul>
-  </div>
+          <span class="text-sm">{{ atividade }}</span>
+          <button
+            class="group flex items-center justify-center p-1.5 rounded-sm cursor-pointer size-6 hover:bg-gray-100"
+          >
+            <i class="ph ph-x text-danger-dark text-base"></i>
+          </button>
+        </li>
+        }
+      </ul>
+    </div>
 
-  <app-button [variant]="'primary'">Gerar certificado</app-button>
+    <app-button [variant]="'primary'">Gerar certificado</app-button>
+  </div>
 </div>
