@@ -1,4 +1,4 @@
-<div class="mx-auto w-full max-w-2xl">
+<form novalidate #form="ngForm" class="mx-auto w-full max-w-2xl">
   <div class="text-center h-15 mb-8">
     <h1 class="font-bold text-gray-300 text-2xl leading-none mb-2">Geração de certificado</h1>
     <p class="text-gray-200 text-sm leading-5">Preencha os dados para gerar um novo certificado</p>
@@ -8,12 +8,23 @@
     <h2 class="text-blue-dark font-bold text-lg">Novo certificado</h2>
 
     <div class="input-group">
-      <label for="nome">Nome completo</label>
-      <input type="text" id="nome" name="nome" placeholder="Digite o nome completo do aluno" />
+      <label for="name">Nome completo</label>
+      <input
+        type="text"
+        id="name"
+        required
+        name="name"
+        maxlength="150"
+        #nameRef="ngModel"
+        [(ngModel)]="name"
+        placeholder="Digite o nome completo do aluno"
+      />
+      @if (nameRef.invalid && nameRef.touched) {
       <div class="error-msg flex items-center gap-x-1 text-danger-dark">
         <i class="ph ph-warning-circle text-base"></i>
-        <p class="text-xs leading-none align-middle">Mensagem de erro</p>
+        <p class="text-xs leading-none align-middle">O nome do aluno é obrigatório</p>
       </div>
+      }
     </div>
 
     <div class="input-group">
@@ -23,30 +34,59 @@
           type="text"
           id="atividade"
           name="atividade"
+          required
+          maxlength="100"
+          #activityRef="ngModel"
+          [(ngModel)]="activity"
+          (ngModelChange)="isDuplicatedActivity = false"
           placeholder="Digite o título da atividade"
         />
-        <app-button [variant]="'secondary'">Adicionar</app-button>
+        <app-button
+          [variant]="'secondary'"
+          [disabled]="activity.length === 0"
+          (click)="addActivity()"
+        >
+          <i class="ph ph-plus"></i>
+          Adicionar
+        </app-button>
       </div>
+      @if (isDuplicatedActivity) {
+      <div class="flex items-center gap-x-1 text-blue-base">
+        <i class="ph ph-warning-circle text-base"></i>
+        <p class="text-xs leading-none align-middle">Esta atividade já foi adicionada</p>
+      </div>
+      }
     </div>
 
     <div>
       <label>Lista de atividades</label>
-      <ul id="lista-atividades" class="mt-2 rounded-lg border border-gray-100 p-4 space-y-3">
-        @for (atividade of atividades; track atividade) {
-        <li
-          class="flex items-center justify-between gap-3 border-gray-100 not-last-of-type:pb-3 not-last-of-type:border-b"
-        >
-          <span class="text-sm">{{ atividade }}</span>
-          <button
-            class="group flex items-center justify-center p-1.5 rounded-sm cursor-pointer size-6 hover:bg-gray-100"
+      <div class="border border-gray-100 mt-2 rounded-lg text-sm">
+        @if (activities.length === 0) {
+        <p class="h-10 py-2 px-4 text-gray-200/80">Nenhuma atividade adicionada</p>
+        } @else {
+        <ul id="lista-atividades" class="p-4 space-y-3">
+          @for (activity of activities; track activity) {
+          <li
+            class="flex items-center justify-between gap-3 border-gray-100 not-last-of-type:pb-3 not-last-of-type:border-b"
           >
-            <i class="ph ph-x text-danger-dark text-base"></i>
-          </button>
-        </li>
+            <span class="text-sm">{{ activity }}</span>
+            <button
+              class="group flex items-center justify-center p-1.5 rounded-sm cursor-pointer size-6 hover:bg-gray-100"
+              (click)="removeActivity($index)"
+            >
+              <i class="ph ph-x text-danger-dark text-base"></i>
+            </button>
+          </li>
+          }
+        </ul>
         }
-      </ul>
+      </div>
     </div>
 
-    <app-button [variant]="'primary'">Gerar certificado</app-button>
+    <app-button
+      [variant]="'primary'"
+      [disabled]="activities.length === 0 || name.trim().length === 0"
+      >Gerar certificado</app-button
+    >
   </div>
-</div>
+</form>
