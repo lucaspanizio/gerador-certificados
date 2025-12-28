@@ -8,14 +8,15 @@ export const routes: Routes = [
   },
   {
     path: 'certificados',
-    loadComponent: () => import('../pages/certificados').then((m) => m.Certificados),
+    loadComponent: () => import('../pages/certificados').then((m) => m.CertificadosComponent),
   },
   {
     path: 'certificados/novo',
-    loadComponent: () => import('../pages/form-certificado').then((m) => m.FormCertificado),
+    loadComponent: () =>
+      import('../pages/form-certificado').then((m) => m.FormCertificadoComponent),
   },
   {
     path: 'certificados/:id',
-    loadComponent: () => import('../pages/certificado').then((m) => m.Certificado),
+    loadComponent: () => import('../pages/certificado').then((m) => m.CertificadoComponent),
   },
 ];

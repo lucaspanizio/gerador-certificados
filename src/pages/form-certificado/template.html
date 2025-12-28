@@ -43,7 +43,7 @@
         />
         <app-button
           [variant]="'secondary'"
-          [disabled]="activity.length === 0"
+          [disabled]="!activity || activity.length === 0"
           (click)="addActivity()"
         >
           <i class="ph ph-plus"></i>
@@ -83,10 +83,8 @@
       </div>
     </div>
 
-    <app-button
-      [variant]="'primary'"
-      [disabled]="activities.length === 0 || name.trim().length === 0"
-      >Gerar certificado</app-button
-    >
+    <app-button [variant]="'primary'" [disabled]="isInvalidForm()" (click)="submit()">
+      Gerar certificado
+    </app-button>
   </div>
 </form>

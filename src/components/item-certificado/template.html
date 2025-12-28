@@ -1,9 +1,11 @@
-<div class="card h-18 p-4 border border-gray-100 rounded-md mb-1">
+<li class="card h-18 p-4 border border-gray-100 rounded-md mb-1">
   <div class="flex justify-between items-center **:leading-none">
     <div>
-      <span class="block text-sm font-bold text-blue-dark mb-1">Nome do aluno</span>
-      <small class="text-xs text-gray-200">Gerado em 23/12/2025</small>
+      <span class="block text-sm font-bold text-blue-dark mb-1">{{ data.nome }}</span>
+      <small class="text-xs text-gray-200"
+        >Gerado em {{ data.dataEmissao | date: "dd/MM/yyyy 'às' HH:mm" }}</small
+      >
     </div>
-    <app-button [variant]="'secondary'" [routerLink]="['/certificados', id]">Ver</app-button>
+    <app-button [variant]="'secondary'" [routerLink]="['/certificados', data.id]">Ver</app-button>
   </div>
-</div>
+</li>

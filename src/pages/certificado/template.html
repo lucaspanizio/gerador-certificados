@@ -31,7 +31,7 @@
           id="nome-aluno"
           class="font-[Dancing_Script] text-blue-base font-bold text-2xl sm:text-4xl lg:text-[3.25rem] leading-tight lg:leading-20 my-2"
         >
-          Ana Silva Lopes
+          {{ data.nome }}
         </p>
 
         <p class="text-gray-300 text-xxs lg:text-xs">
@@ -43,9 +43,7 @@
           title="Introdução ao Angular, Configuração com Angular CLI, Criação de componentes reutilizáveis, Manipulação de dados, Implementação de data binding, Criação de rotas com Angular Router, Consumo de APIs REST"
           class="text-gray-300 my-2 max-w-2/3 text-balance leading-4 sm:leading-5.5 line-clamp-4 max-sm:line-clamp-3 text-ellipsis text-[clamp(0.625rem,1.75vw,0.875rem)] break-words [hyphens:auto]"
         >
-          Introdução ao Angular, Configuração com Angular CLI, Criação de componentes reutilizáveis,
-          Manipulação de dados, Implementação de data binding, Criação de rotas com Angular Router,
-          Consumo de APIs REST
+          {{ data.atividades.join(', ') }}
         </p>
 
         <div class="w-full h-3 mt-auto flex items-center relative">
@@ -53,7 +51,7 @@
             id="data-emissao"
             class="font-bold text-xxs lg:text-xs text-gray-300 absolute left-1/2 -translate-x-1/2"
           >
-            Emitido em 24/12/2025
+            Emitido em {{ data.dataEmissao | date: 'dd/MM/yyyy' }}
           </p>
 
           <img

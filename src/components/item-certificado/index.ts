@@ -1,16 +1,18 @@
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
+import { Certificado } from '../../interfaces/certificado';
 import { Button } from '../button';
 
 @Component({
   selector: 'app-item-certificado',
   templateUrl: './template.html',
-  imports: [Button, RouterLink],
+  imports: [Button, RouterLink, DatePipe],
   host: {
     class: 'w-full last:[&_.card]:mb-0',
   },
 })
 export class ItemCertificado {
-  id: string = '5';
+  @Input() data!: Certificado;
 }
