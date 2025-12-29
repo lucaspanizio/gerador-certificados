@@ -1,0 +1,33 @@
+@reference "../../styles.css";
+
+.print {
+  @apply w-[800px] h-[550px] mt-0 p-10;
+}
+
+.print img#medalha {
+  @apply top-3 left-3 w-auto;
+}
+
+.print img#assinatura {
+  @apply w-16;
+}
+
+.print #content {
+  @apply m-10;
+
+  h1 {
+    @apply text-2xl;
+  }
+
+  p {
+    @apply text-xs;
+  }
+
+  p#nome-aluno {
+    @apply text-[3.25rem] leading-20;
+  }
+
+  p#lista-atividades {
+    @apply leading-5.5 line-clamp-4 text-sm;
+  }
+}
