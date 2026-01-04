@@ -4,7 +4,6 @@ import { Component, HostBinding, input } from '@angular/core';
   selector: 'app-button',
   templateUrl: './template.html',
   styleUrl: './styles.css',
-  imports: [],
 })
 export class Button {
   variant = input<'primary' | 'secondary'>('primary');
