@@ -1,97 +1,93 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter, Router } from '@angular/router';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { render, screen } from '@testing-library/angular';
+import userEvent from '@testing-library/user-event';
+import { provideRouter } from '@angular/router';
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 
 import { Navbar } from './';
+import { TestBed } from '@angular/core/testing';
+
+/* -------------------------------------------------------------------------- */
+/*                               Mock Component                               */
+/* -------------------------------------------------------------------------- */
 
 @Component({
-  selector: `app-mock-component`,
+  selector: 'app-mock-component',
   template: `<div>MockComponent works!</div>`,
 })
 class MockComponent {}
 
+/* -------------------------------------------------------------------------- */
+/*                                   Setup                                    */
+/* -------------------------------------------------------------------------- */
+
+beforeEach(async () => {
+  await render(Navbar, {
+    providers: [
+      provideRouter([
+        { path: '', component: MockComponent },
+        { path: 'certificados', component: MockComponent },
+        { path: 'certificados/novo', component: MockComponent },
+      ]),
+    ],
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/*                                   Tests                                    */
+/* -------------------------------------------------------------------------- */
+
 describe('Navbar', () => {
-  let fixture: ComponentFixture<Navbar>;
-  let element: HTMLElement;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Navbar],
-      providers: [
-        provideRouter([
-          { path: 'certificados', component: MockComponent },
-          { path: 'certificados/novo', component: MockComponent },
-        ]),
-      ],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(Navbar);
-    element = fixture.nativeElement;
-    fixture.detectChanges();
-  });
-
-  it('deve renderizar corretamente', () => {
-    [
-      'nav#navbar',
-      'div#navbar-inner',
-      'a#navbar-logo',
-      'div#navbar-items',
-      'ul#navbar-list',
-    ].forEach((selector) => {
-      expect(element.querySelector(selector)).not.toBeNull();
-    });
-
-    const items = element.querySelectorAll('li.navbar-item');
-    expect(items.length).toBe(2);
-
-    items.forEach((item) => expect(item.querySelector('a.navbar-link')).not.toBeNull());
-  });
-
-  it('deve configurar o link do logo para a home', () => {
-    const logo = element.querySelector('a#navbar-logo') as HTMLAnchorElement;
-
-    expect(logo).not.toBeNull();
-    expect(logo.getAttribute('href')).toBe('/');
+  it('deve renderizar o componente', () => {
+    expect(screen.getByTestId('navbar')).toBeInTheDocument();
+    expect(screen.getByTestId('logo')).toBeInTheDocument();
+    expect(screen.getByRole('list')).toBeInTheDocument();
   });
 
   it('deve renderizar os links de navegação', () => {
-    const logo = element.querySelector('#navbar-logo') as HTMLAnchorElement;
-    expect(logo.getAttribute('href')).toBe('/');
-
-    const links = element.querySelectorAll('a.navbar-link') as NodeListOf<HTMLAnchorElement>;
-
-    expect(links.length).toBe(2);
+    const links = screen.getAllByRole('link');
 
     const expectations = [
-      { text: 'Lista de certificados', href: '/certificados' },
-      { text: 'Gerar certificado', href: '/certificados/novo' },
+      { text: /lista de certificados/i, href: '/certificados' },
+      { text: /gerar certificado/i, href: '/certificados/novo' },
     ];
 
-    links.forEach((link, index) => {
-      expect(link.textContent).toContain(expectations[index].text);
-      expect(link.getAttribute('href')).toBe(expectations[index].href);
+    // ignora o logo (primeiro link)
+    const navLinks = links.slice(1);
+
+    expect(navLinks).toHaveLength(2);
+
+    navLinks.forEach((link, index) => {
+      expect(link).toHaveTextContent(expectations[index].text);
+      expect(link).toHaveAttribute('href', expectations[index].href);
     });
   });
 
-  [
-    { index: 0, url: '/certificados', description: 'deve navegar para a lista de certificados' },
-    {
-      index: 1,
-      url: '/certificados/novo',
-      description: 'deve navegar para o formulário de criação',
-    },
-  ].forEach(({ index, url, description }) => {
-    it(description, async () => {
-      const router = TestBed.inject(Router);
+  it('deve navegar para a página inicial ao clicar na logo', async () => {
+    const user = userEvent.setup();
+    const location = TestBed.inject(Location);
 
-      const links = element.querySelectorAll('a.navbar-link') as NodeListOf<HTMLAnchorElement>;
+    await user.click(screen.getByTestId('logo'));
 
-      links[index].click();
+    expect(location.path()).toBe('/');
+  });
 
-      await fixture.whenStable();
-      fixture.detectChanges();
+  it('deve navegar para a lista de certificados ao clicar no link correspondente', async () => {
+    const user = userEvent.setup();
+    const location = TestBed.inject(Location);
 
-      expect(router.url).toBe(url);
-    });
+    await user.click(screen.getByRole('link', { name: /lista de certificados/i }));
+
+    expect(location.path()).toBe('/certificados');
+  });
+
+  it('deve navegar para o formulário de criação ao clicar no link correspondente', async () => {
+    const user = userEvent.setup();
+    const location = TestBed.inject(Location);
+
+    await user.click(screen.getByRole('link', { name: /gerar certificado/i }));
+
+    expect(location.path()).toBe('/certificados/novo');
   });
 });

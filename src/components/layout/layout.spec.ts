@@ -1,47 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { render, screen } from '@testing-library/angular';
 
 import { Layout } from './';
 
 describe('Layout', () => {
-  let fixture: ComponentFixture<Layout>;
+  beforeEach(async () => await render(Layout));
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Layout],
-      providers: [provideRouter([])],
-    }).compileComponents();
+  it('deve renderizar o componente', () => {
+    const wrapper = screen.getByTestId('layout');
+    const navbar = screen.getByTestId('navbar');
+    const content = screen.getByTestId('content');
 
-    fixture = TestBed.createComponent(Layout);
-    fixture.detectChanges();
+    expect(wrapper).toBeInTheDocument();
+    expect(navbar).toBeInTheDocument();
+    expect(content).toBeInTheDocument();
   });
 
-  it('deve renderizar corretamente', () => {
-    const element: HTMLElement = fixture.nativeElement;
-    let expectedClasses: string[];
+  it('deve conter as classes esperadas', () => {
+    const wrapper = screen.getByTestId('layout');
+    const content = screen.getByTestId('content');
 
-    // wrapper principal
-    const layout = element.querySelector('div#layout');
-    expect(layout).not.toBeNull();
+    const wrapperClasses = ['grid', 'grid-rows-[auto_1fr]', 'gap-y-10', 'min-h-screen', 'pt-18'];
+    const contentClasses = ['container', 'mx-auto', 'px-5', 'md:px-20', 'lg:max-w-3/4'];
 
-    expectedClasses = ['grid', 'grid-rows-[auto_1fr]', 'gap-y-10', 'min-h-screen', 'pt-18'];
-
-    expectedClasses.forEach((className) => {
-      expect(layout!.className).toContain(className);
-    });
-
-    // navbar (composição, não comportamento)
-    const navbar = element.querySelector('app-navbar');
-    expect(navbar).not.toBeNull();
-
-    expectedClasses = ['container', 'mx-auto', 'px-5', 'md:px-20', 'lg:max-w-3/4'];
-
-    // área de conteúdo
-    const main = element.querySelector('main#content');
-    expect(main).not.toBeNull();
-
-    expectedClasses.forEach((className) => {
-      expect(main!.className).toContain(className);
-    });
+    wrapperClasses.forEach((className) => expect(wrapper).toHaveClass(className));
+    contentClasses.forEach((className) => expect(content).toHaveClass(className));
   });
 });
