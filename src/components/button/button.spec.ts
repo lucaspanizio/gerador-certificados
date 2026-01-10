@@ -21,7 +21,7 @@ describe('Button', () => {
     fixture.detectChanges();
   });
 
-  it('deve renderizar corretamente', () => {
+  it('deve renderizar o componente', () => {
     expect(component).toBeDefined();
   });
 

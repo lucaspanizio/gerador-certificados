@@ -1,4 +1,4 @@
-<form novalidate #form="ngForm" class="mx-auto w-full max-w-2xl">
+<form novalidate #form="ngForm" (ngSubmit)="submit()" class="mx-auto w-full max-w-2xl">
   <div class="text-center h-15 mb-8">
     <h1 class="font-bold text-gray-300 text-2xl leading-none mb-2">Geração de certificado</h1>
     <p class="text-gray-200 text-sm leading-5">Preencha os dados para gerar um novo certificado</p>
@@ -42,8 +42,9 @@
           placeholder="Digite o título da atividade"
         />
         <app-button
+          aria-label="Adicionar atividade"
           [variant]="'secondary'"
-          [disabled]="!activity || activity.length === 0"
+          [disabled]="!activity.trim() || activity.length === 0"
           (click)="addActivity()"
         >
           <i class="ph ph-plus"></i>
@@ -71,6 +72,7 @@
           >
             <span class="text-sm">{{ activity }}</span>
             <button
+              aria-label="Remover atividade"
               class="group flex items-center justify-center p-1.5 rounded-sm cursor-pointer size-6 hover:bg-gray-100"
               (click)="removeActivity($index)"
             >
@@ -83,7 +85,7 @@
       </div>
     </div>
 
-    <app-button [variant]="'primary'" [disabled]="isInvalidForm()" (click)="submit()">
+    <app-button id="gerar" [variant]="'primary'" [disabled]="isInvalidForm()" [type]="'submit'">
       Gerar certificado
     </app-button>
   </div>

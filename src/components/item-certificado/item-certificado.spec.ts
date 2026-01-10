@@ -27,6 +27,10 @@ describe('ItemCertificado', () => {
     fixture = TestBed.createComponent(ItemCertificado);
   });
 
+  it('deve renderizar o componente', () => {
+    expect(fixture.componentInstance).toBeDefined();
+  });
+
   it('deve renderizar corretamente o conteúdo do certificado', () => {
     fixture.componentRef.setInput('data', certificadoMock);
     fixture.detectChanges();
